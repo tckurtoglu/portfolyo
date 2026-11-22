@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tolga Kurtoğlu | Ağ ve Sistem Teknolojileri Portfolyosu</title>
+    <style>
+        :root {
+            --bg-primary: #0b1120;
+            --bg-secondary: #111827;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigasyon */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 17, 32, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Genel Bölüm Yapısı */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5.5rem 1.5rem 3rem;
+        }
+
+        h2.section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        /* 01 Ana Sayfa (Hero) */
+        #anasayfa {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 6rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        #anasayfa h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        #anasayfa h1 span {
+            color: var(--accent);
+        }
+
+        #anasayfa p {
+            max-width: 650px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #0b1120;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: #fff;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Kart Yapıları */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Yetenek Etiketleri */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: var(--bg-secondary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* Projeler */
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* İletişim */
+        .contact-box {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            section {
+                padding: 4.5rem 1.25rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Menü -->
+    <header>
+        <nav>
+            <a href="#anasayfa" class="logo">TK.net</a>
+            <ul class="nav-links">
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#egitim">Eğitim</a></li>
+                <li><a href="#yetenekler">Teknik Yetenekler</a></li>
+                <li><a href="#projeler">Projelerim</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 01 Ana Sayfa -->
+    <section id="anasayfa">
+        <span class="badge">İnternet ve Ağ Teknolojileri Öğrencisi</span>
+        <h1>Merhaba, Ben <span>Tolga Kurtoğlu</span></h1>
+        <p>
+            Bilgisayar ağları, sunucu işletim sistemleri, sanallaştırma ve Python otomasyon betikleri üzerine odaklanan bir teknoloji meraklısıyım. Teorik ağ mimarilerini sanal laboratuvar ortamlarında uygulamaya dökerek sistem yönetimi alanında uzmanlaşıyorum.
+        </p>
+        <div class="btn-group">
+            <a href="#projeler" class="btn btn-primary">Projelerimi İncele</a>
+            <a href="#iletisim" class="btn btn-outline">İletişime Geç</a>
+        </div>
+    </section>
+
+    <!-- 02 Hakkımda -->
+    <section id="hakkimda">
+        <h2 class="section-title">Hakkımda</h2>
+        <div class="card">
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                İstanbul'da yaşayan, sistem ve ağ altyapılarının çalışma mantığını derinlemesine öğrenmeyi hedefleyen bir İnternet ve Ağ Teknolojileri öğrencisiyim. VirtualBox üzerinde kurduğum Windows Server ve Ubuntu Linux sanal laboratuvarlarıyla aktif dizin yönetimi, ağ güvenliği ve sunucu servislerini pratik olarak deneyimliyorum.
+            </p>
+            <p style="color: var(--text-secondary);">
+                <strong style="color: var(--text-primary);">Kariyer Hedefim:</strong> Kurumsal ağ altyapıları, sunucu yönetimi ve otomasyon süreçlerinde görev alabileceğim Sistem ve Ağ Uzmanlığı pozisyonlarında kendimi geliştirmek ve staj/iş süreçlerinde katma değer üretmek.
+            </p>
+        </div>
+    </section>
+
+    <!-- 03 Eğitim -->
+    <section id="egitim">
+        <h2 class="section-title">Eğitim</h2>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <h3 style="color: var(--accent);">İnternet ve Ağ Teknolojileri (Önlisans)</h3>
+                <span style="color: var(--text-secondary); font-size: 0.9rem;">Devam Ediyor</span>
+            </div>
+            <p style="color: var(--text-secondary);">
+                Odak Dersler: Sunucu İşletim Sistemleri, Bilgisayar Ağları (OSI & TCP/IP Mimarisi), Yönlendirme Protokolleri, Algoritma ve Programlama (Python 3), Kablosuz Ağ Standartları (IEEE 802.11).
+            </p>
+        </div>
+    </section>
+
+    <!-- 04 Teknik Yetenekler -->
+    <section id="yetenekler">
+        <h2 class="section-title">Teknik Yetenekler</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Sunucu & İşletim Sistemleri</h3>
+                <div class="skill-tags">
+                    <span class="tag">Windows Server 2022</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">Group Policy (GPO)</span>
+                    <span class="tag">Ubuntu Linux 26.04</span>
+                    <span class="tag">OpenSSH</span>
+                    <span class="tag">VirtualBox</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Ağ Teknolojileri</h3>
+                <div class="skill-tags">
+                    <span class="tag">TCP/IP & OSI Modeli</span>
+                    <span class="tag">DNS / DHCP / HTTP(S)</span>
+                    <span class="tag">Subnetting & Routing</span>
+                    <span class="tag">SMB Dosya Paylaşımı</span>
+                    <span class="tag">Ağ İzleme (ICMP/Ping)</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Programlama & Araçlar</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python 3</span>
+                    <span class="tag">Windows Batch Scripting</span>
+                    <span class="tag">Linux Bash Terminal</span>
+                    <span class="tag">HTML5 & CSS3</span>
+                    <span class="tag">Git & GitHub Pages</span>
+                    <span class="tag">VS Code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 Projelerim -->
+    <section id="projeler">
+        <h2 class="section-title">Projelerim</h2>
+        <div class="grid-2">
+            <div class="card project-card">
+                <h3>Ağ Anahtarı (Switch) Kesinti İzleme Otomasyonu</h3>
+                <p>
+                    Harici bir IP listesinden hedef ağ cihazlarını okuyarak sürekli erişilebilirlik kontrolü yapan, bağlantı kopmalarında sesli uyarı veren ve kesintileri zaman damgasıyla kayıt altına alan Windows Batch aracı (<code>ping_kontrol.bat</code>).
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">Batch Script</span>
+                    <span class="tag">ICMP</span>
+                    <span class="tag">Ağ İzleme</span>
+                </div>
+            </div>
+
+            <div class="card project-card">
+                <h3>Windows Server 2022 Active Directory Laboratuvarı</h3>
+                <p>
+                    VirtualBox üzerinde izole sanal ağ kurularak gerçekleştirilen Domain Controller yapılandırması, kullanıcı/birim (OU) yönetimi, Grup İlkesi (GPO) kuralları ve sunucu yedekleme senaryoları.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">Windows Server 2022</span>
+                    <span class="tag">AD DS</span>
+                    <span class="tag">VirtualBox</span>
+                </div>
+            </div>
+
+            <div class="card project-card">
+                <h3>Ubuntu Linux Sunucu ve SSH Yönetimi</h3>
+                <p>
+                    Ubuntu Linux ortamında terminal tabanlı sistem yönetimi, girdi/çıktı yönlendirme, disk/ağ kaynak izleme ve OpenSSH sunucusu üzerinden güvenli uzak erişim yapılandırması.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">Ubuntu Linux</span>
+                    <span class="tag">OpenSSH</span>
+                    <span class="tag">Bash</span>
+                </div>
+            </div>
+
+            <div class="card project-card">
+                <h3>JSON Veri İşleme ve Takipçi Analiz Betiği</h3>
+                <p>
+                    Sosyal medya hesap dışa aktarım dosyalarını (JSON) ayrıştırarak karşılıklı takipleşme durumlarını analiz eden ve raporlayan Python 3 otomasyon uygulaması.
+                </p>
+                <div class="skill-tags">
+                    <span class="tag">Python 3</span>
+                    <span class="tag">JSON</span>
+                    <span class="tag">Veri Analizi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 İletişim -->
+    <section id="iletisim">
+        <h2 class="section-title">İletişim</h2>
+        <div class="card contact-box">
+            <p style="color: var(--text-secondary);">
+                Staj fırsatları, teknik projeler veya iş birlikleri için aşağıdaki kanallar üzerinden benimle iletişime geçebilirsiniz:
+            </p>
+            <div class="contact-item">
+                <strong>Konum:</strong> <span>İstanbul, Türkiye</span>
+            </div>
+            <div class="contact-item">
+                <strong>E-posta:</strong> <a href="mailto:tolgakurtoglu.iletisim@ornek.com">tolgakurtoglu.iletisim@ornek.com</a>
+            </div>
+            <div class="contact-item">
+                <strong>GitHub:</strong> <a href="https://github.com/kullaniciadiniz" target="_blank" rel="noopener">github.com/kullaniciadiniz</a>
+            </div>
+            <div class="contact-item">
+                <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/kullaniciadiniz" target="_blank" rel="noopener">linkedin.com/in/kullaniciadiniz</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Tolga Kurtoğlu — BGT 1011 Sunucu İşletim Sistemleri Dersi Portfolyo Projesi</p>
+    </footer>
+
+</body>
+</html>
