@@ -36,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Dinamik Ağ Topolojisi Canvas Arka Planı */
     #network-canvas {
       position: fixed;
       inset: 0;
@@ -50,12 +49,11 @@
       margin-inline: auto;
     }
 
-    /* Üst Navigasyon */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(9, 9, 11, 0.8);
+      background: rgba(9, 9, 11, 0.82);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -132,7 +130,6 @@
       color: #052e16;
     }
 
-    /* Fare Takipli Spotlight Bento Kart Altyapısı */
     .bento-card {
       position: relative;
       background: var(--surface);
@@ -161,7 +158,6 @@
       transform: translateY(-3px);
     }
 
-    /* 01 ANA SAYFA — BENTO HERO GRID */
     .hero-bento {
       display: grid;
       grid-template-columns: 270px 1fr;
@@ -170,7 +166,6 @@
       padding-top: 32px;
     }
 
-    /* Profil Kartı */
     .profile-card {
       grid-row: span 2;
       display: flex;
@@ -203,6 +198,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
     }
     .photo-fallback {
@@ -257,7 +253,6 @@
       font-weight: 600;
     }
 
-    /* Ana Tanıtım Kartı */
     .intro-card {
       display: flex;
       flex-direction: column;
@@ -316,7 +311,6 @@
       transform: translateY(-2px);
     }
 
-    /* İnteraktif Lab Terminal Kartı */
     .terminal-card {
       background: #0c0c0f;
       padding: 18px 22px;
@@ -377,7 +371,6 @@
     .term-amber { color: var(--amber); }
     .term-dim { color: #71717a; }
 
-    /* Ortak Bölüm Stilleri */
     .section {
       padding-top: 28px;
     }
@@ -398,7 +391,6 @@
       letter-spacing: -0.025em;
     }
 
-    /* 02 HAKKIMDA & 03 EĞİTİM */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -439,7 +431,6 @@
       color: #e4e4e7;
     }
 
-    /* 04 TEKNİK YETENEKLER */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -485,7 +476,6 @@
       color: var(--emerald);
     }
 
-    /* 05 PROJELERİM */
     .project-card {
       display: flex;
       flex-direction: column;
@@ -536,7 +526,6 @@
       color: var(--emerald);
     }
 
-    /* 06 İLETİŞİM */
     .contact-card {
       margin: 28px 0 40px;
       display: flex;
@@ -554,7 +543,6 @@
       gap: 10px;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding: 22px 0 32px;
@@ -574,7 +562,6 @@
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    /* Mobil Uyumluluk */
     @media (max-width: 900px) {
       .hero-bento { grid-template-columns: 1fr; }
       .profile-card { grid-row: auto; }
@@ -589,10 +576,8 @@
   </style>
 </head>
 <body id="top">
-  <!-- Canlı Ağ Düğümü Arka Planı -->
   <canvas id="network-canvas" aria-hidden="true"></canvas>
 
-  <!-- Üst Menü -->
   <header class="navbar">
     <div class="container nav-inner">
       <a href="#anasayfa" class="brand">
@@ -617,16 +602,14 @@
   </header>
 
   <main class="container">
-    <!-- 01 ANA SAYFA (Bento Grid) -->
+    <!-- 01 ANA SAYFA -->
     <section id="anasayfa" class="hero-bento">
-      <!-- Sol Kutu: Profil Fotoğrafı & Hızlı Bilgiler -->
       <aside class="bento-card profile-card">
         <div>
           <div class="photo-wrapper">
             <div class="photo-box">
-              <!-- Klasöre profil.jpg eklediğinde otomatik görünür -->
-              <img src="profil.jpg" alt="Tolga Can Kurtoğlu" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-              <div class="photo-fallback">TCK</div>
+              <img id="profile-photo" src="profil.jpg" alt="Tolga Can Kurtoğlu" />
+              <div id="profile-fallback" class="photo-fallback">TCK</div>
             </div>
           </div>
 
@@ -645,7 +628,6 @@
         </div>
       </aside>
 
-      <!-- Sağ Üst Kutu: Ana Tanıtım -->
       <div class="bento-card intro-card">
         <div class="cmd-prompt">tolga@netlab:~$ whoami --role</div>
         <h1 data-i18n="heroTitle">Ağ Mimarileri &amp; Sunucu Sistemleri Geliştiricisi</h1>
@@ -659,7 +641,6 @@
         </div>
       </div>
 
-      <!-- Sağ Alt Kutu: İnteraktif Laboratuvar Terminal Simülatörü -->
       <div class="bento-card terminal-card">
         <div class="terminal-top">
           <div class="win-dots"><span></span><span></span><span></span></div>
@@ -680,7 +661,6 @@
 
     <!-- 02 HAKKIMDA & 03 EĞİTİM -->
     <section class="section grid-2">
-      <!-- 02 Hakkımda -->
       <article id="hakkimda" class="bento-card">
         <span class="section-tag" data-i18n="aboutTag">02 // HAKKIMDA</span>
         <h2 data-i18n="aboutTitle">İlgi Alanları ve Kariyer Hedefleri</h2>
@@ -692,7 +672,6 @@
         </p>
       </article>
 
-      <!-- 03 Eğitim -->
       <article id="egitim" class="bento-card">
         <span class="section-tag" data-i18n="eduTag">03 // EĞİTİM BİLGİLERİ</span>
         <h2 data-i18n="eduTitle">İnternet ve Ağ Teknolojileri (Önlisans)</h2>
@@ -876,6 +855,23 @@
 
   <script>
     (() => {
+      // 0. Akıllı Profil Fotoğrafı Yükleyici (jpg, png, jpeg, webp otomatik dener)
+      const img = document.getElementById('profile-photo');
+      const fallback = document.getElementById('profile-fallback');
+      if (img && fallback) {
+        const candidates = ['profil.jpg', 'profil.png', 'profil.jpeg', 'profil.webp'];
+        let idx = 0;
+        img.addEventListener('error', () => {
+          idx++;
+          if (idx < candidates.length) {
+            img.src = candidates[idx];
+          } else {
+            img.style.display = 'none';
+            fallback.style.display = 'grid';
+          }
+        });
+      }
+
       // 1. Kartlar Üzerinde Fare Takipli Spotlight Efekti
       document.querySelectorAll('.bento-card').forEach(card => {
         card.addEventListener('mousemove', e => {
